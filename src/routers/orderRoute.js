@@ -1,6 +1,6 @@
 import express from "express";
-import verifyLogin from "../middlewares/protectRoute";
-import { makeOrder } from "../controllers/orderController";
+import verifyLogin from "../middlewares/protectRoute.js";
+import { makeOrder } from "../controllers/orderController.js";
 
 const routes=express();
 
