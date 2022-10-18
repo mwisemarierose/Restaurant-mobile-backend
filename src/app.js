@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import mongoConnect from './config/db.config.js'
 import userRouter from "./routers/userRoute.js";
 import orderRouter from './routers/orderRoute.js'
+import cartRoute from './routers/cartRoute.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -17,6 +18,8 @@ app.use(bodyParser.json({type:"*/*"}));
 
 app.use("/users", userRouter);
 app.use("/order", orderRouter);
+app.use("/item", cartRoute);
+
 
 
 app.get('/',(req,res) =>{

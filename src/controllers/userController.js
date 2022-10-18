@@ -8,11 +8,8 @@ import AppError from '../util/appError.js';
 
      export const signup = ((async (req,res,next) => {
 
-        
         const { username,email,password } = req.body;
         const hashpassword =compare.hashpassword(password);
-
-    
 
          let userEmailExist = await User.findOne({ email: req.body.email });
          let usernameExist = await User.findOne( { username: req.body.username });

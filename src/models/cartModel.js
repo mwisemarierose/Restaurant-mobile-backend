@@ -1,30 +1,33 @@
 import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
-const orderSchema = new Schema(
-  
+const foodSchema = new Schema(
   {
-    orderId: String,
-    username: {
+    name: {
       type: String,
+      trim: true,
       required: true,
     },
-    email: {
+    category: {
       type: String,
+      trim: true,
       required: true,
     },
-    quantity: {
-      type: [],
-      required: true,
-    },
-    address: {
+    cost: {
       type: String,
+      trim: true,
       required: true,
     },
+    desc: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    thumb: String,
   },
   { timestamps: true }
 );
 
-const Order = model('Order', orderSchema);
+const food = model('food', foodSchema);
 
-export default Order;
+export default food;
