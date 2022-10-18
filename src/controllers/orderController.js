@@ -27,23 +27,3 @@ import orderValidation from '../helpers/validation.js'
       return res.status(500).json({ message: error.message });
     }
   }
-//   getAllOrders: async (req, res) => {
-//     try {
-//       const orders = await Orders.find();
-//       res.status(200).json({ orders });
-//     } catch (error) {
-//       return res.status(500).json({ message: error.message });
-//     }
-//   },
-//   deleteOrder: async (req, res) => {
-//     try {
-//       let order = await Orders.findById(req.params.id);
-//       await order.remove();
-//       res.status(200).json({ message: "Successfully delivered" });
-//     } catch (error) {
-//       return res.status(500).json({ message: error.message });
-//     }
-//   },
-
-
-// module.exports = orderController;
