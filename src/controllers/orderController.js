@@ -6,13 +6,7 @@ import orderValidation from '../helpers/validation.js'
   export const makeOrder = async (req, res) => {
     try {
       const { username, email, quantity, address } = req.body;
-      // const errorMessage = orderValidation(
-      //   username,
-      //   email,
-      //   quantity,
-      //   address
-      // );
-      // if (errorMessage) return res.status(400).json({ message: errorMessage });
+     
       const user = await Users.findOne({ email });
       if (!user)
         return res
