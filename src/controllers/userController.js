@@ -1,7 +1,5 @@
-import Mongoose from 'mongoose'
 import User from '../models/userModel.js'
 import compare from '../helpers/authentication.js'
-import registerValidation from '../helpers/validation.js'
 import AppError from '../util/appError.js';
 
 

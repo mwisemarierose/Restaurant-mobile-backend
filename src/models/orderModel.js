@@ -4,7 +4,7 @@ const { Schema, model } = mongoose;
 const orderSchema = new Schema(
   
   {
-    orderId: String,
+    // orderId: String,
     username: {
       type: String,
       required: true,

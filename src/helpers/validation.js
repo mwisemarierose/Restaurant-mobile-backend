@@ -19,7 +19,7 @@ const schema  =joi.object().keys({
 return schema.validate(order);
 }
 
-function validateFoodData(data) {
+const  validateFoodData =(data) => {
     const joiSchema = joi.object({
       name: joi.string().min(5).required(),
       category: joi.string().min(5).required(),
