@@ -14,7 +14,7 @@ import orderValidation from '../helpers/validation.js'
           .json({ message: "wrong email address.Please retry" });
       await new Orders({ username, email, quantity, address }).save();
       res.status(201).json({
-        message: "You have successfully placed order",
+        message: "You have successfully placed your order",
       });
     } catch (error) {
       return res.status(500).json({ message: error.message });
