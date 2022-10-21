@@ -6,7 +6,7 @@ const routes=express();
 routes.post('/signup',signup)
 routes.post('/signin',signin)
 routes.get('/getAll',getAllUsers)
-routes.patch('/update/:_id', updateProfile)
+routes.patch('/update/:id', updateProfile)
 
 
 export default routes;

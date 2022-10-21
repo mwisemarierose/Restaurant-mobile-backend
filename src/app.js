@@ -13,8 +13,8 @@ const port= 3000 ;
 const app= express();
 mongoConnect();
 
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(bodyParser.json({type:"*/*"}));
+app.use(bodyParser.json({limit: '10mb', extended: true}))
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
 
 app.use("/users", userRouter);
 app.use("/order", orderRouter);

@@ -1,5 +1,4 @@
 import multer from "multer"
-import path from "path"
 
  const upload = multer({
      storage: multer.diskStorage({}),
@@ -9,9 +8,9 @@ import path from "path"
   },
   
  fileFilter: (req,file,cb)=>{
- let ext = path.extname(file.originalname)
-  if(ext !=='.jpeg'&& ext !=='.jpg' && ext !== '.png'){
-  cb(new Error('un supported format'),false)
+ let ext = file.originalname.split('.').pop()
+  if(ext !=='jpeg'&& ext !=='jpg' && ext !== 'png'){
+  cb(new Error('unsupported format'),false)
   return
   }
   cb(null, true)
