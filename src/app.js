@@ -4,6 +4,7 @@ import mongoConnect from './config/db.config.js'
 import userRouter from "./routers/userRoute.js";
 import orderRouter from './routers/orderRoute.js'
 import foodRouter from './routers/foodRoute.js'
+import requestRouter from './routers/requestRoute.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -19,6 +20,8 @@ app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
 app.use("/users", userRouter);
 app.use("/order", orderRouter);
 app.use("/item", foodRouter);
+app.use("/request", requestRouter);
+
 
 
 

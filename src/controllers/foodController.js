@@ -4,7 +4,10 @@ import cloudinary from "../helpers/cloudinary.js";
 
 export const createItem = async (req, res) => {
   try {
-    const result = await cloudinary.uploader.upload(req.file.path);
+    const result = await cloudinary.uploader.upload(req.file.path,{
+      folder: 'Restaurant',
+      use_filename: true
+  },);
     const newItem = new Foods({
       name: req.body.name,
       category: req.body.category,
