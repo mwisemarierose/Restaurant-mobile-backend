@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer'
+
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -44,7 +45,7 @@ const mailer = async (info, action) =>{
                  subject="user accepted";
                  emailto = info.email;
                  composition = `<p>
-                 your request approved your restaurant has been added to our system, this is your credential <br/>
+                 your request accepted you are now our partner this is your credential <br/>
                  <span>username: </span><h4>${info.username}</h4><span>password: </span> <h4>${info.password}</h4>
              </p>`;
              break;
@@ -79,5 +80,7 @@ const mailer = async (info, action) =>{
         return error
     }
 
+
 }
+
 export default mailer
