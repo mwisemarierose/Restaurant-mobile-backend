@@ -21,8 +21,8 @@ export const signup = async (req, res, next) => {
     .save()
     .then(() => {
       res.status(201).json({
-        message: "You have successfully registered. Please login now",
-        status: 201,
+        message: "You have successfully registered. Please login now", 
+        data:user
       });
     })
     .catch((err) => {
@@ -38,16 +38,12 @@ export const signin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = await User.findOne({
-      where: {
-        email,
-        password,
-      },
-    });
-
+    const user = await User.findOne({email});
+    
     if (!user) {
       throw new Error("User not found");
     }
+    await compare.comparePassword(password,user.password)
     return res.status(200).json({
       message: "you are logged in successfully",
       status: 200,
@@ -60,9 +56,9 @@ export const signin = async (req, res) => {
 
 export const getAllUsers = async (req, res) => {
   try {
-    await User.find({}).then((users) => {
+    await User.find({})
+    .then((users) => {
       return res.status(200).json({
-        status: true,
         data: users,
         message: "Retrieved",
       });

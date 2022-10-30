@@ -22,7 +22,7 @@ const userSchema = new Schema({
       type: String,
       required: [true, 'Please! provide password'],
       minlength: 8,
-      select: false
+    
     },
    
     passwordChangedAt: Date,
@@ -31,7 +31,7 @@ const userSchema = new Schema({
     active: {
       type: Boolean,
       default: true,
-      select: false
+      
     },
    
     role: {

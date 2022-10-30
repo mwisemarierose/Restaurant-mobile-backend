@@ -3,6 +3,8 @@ import compare from "../helpers/authentication.js";
 import mailer from "../helpers/transport.js";
 import Request from "../models/requestModel.js";
 import bcrypt from "bcrypt";
+import AppError from "../util/appError.js";
+
 
 export const createrequest = async (req, res) => {
   try {
@@ -44,10 +46,30 @@ export const getAllrequest = async (req, res) => {
     console.log(err);
   }
 };
-export const confirmRequest = async (req, res) => {
+export const updateRequest = async (req,res) =>{
+  try {
+      const updatedRequest = await Request.findByIdAndUpdate(
+      req.params._id,
+      {
+          $set: req.body,
+      },
+      { new:true}
+      )
+      return res.status(200).json({message:"Request updated successfully", updatedRequest})
+  } catch (error) {
+      return res.status(500).json({error:error.message})
+  }
+}
+
+export const confirmRequest = async (req, res,next) => {
   try {
     const id = req.params;
-    const user = await Request.find(id).select("Name Email Status");
+    // if (Request.Status !== 'pending') {
+    //   return next(
+    //     new AppError('Request is already approved or rejected', 400),
+    //   );
+    // }
+    const user = await Request.find(id).select("Name Email role");
     const password = compare.generatePassword();
     const salt = await bcrypt.genSalt(10);
     const hashpsw = await bcrypt.hash(password, salt);
@@ -57,7 +79,6 @@ export const confirmRequest = async (req, res) => {
         username: user[0].Name,
         password: hashpsw,
         email: user[0].Email,
-        Status: true,
         role: "manager",
       });
       await mailer(
@@ -66,15 +87,29 @@ export const confirmRequest = async (req, res) => {
           password: password,
           username: newUser.username,
         },
-        sendWelcome()
+        "confirm"
       );
       await newUser.save();
     }
-    return res.status(200).json({ message: "request confirmed" });
+    const updatedRequest = await Request.findByIdAndUpdate(
+      req.params._id,
+      {
+         Status :"approved"
+      },
+      { new:true}
+      )
+    return res.status(200).json({ message: "request confirmed",updatedRequest });
   } catch (error) {
     console.log(error);
   }
 };
+
+export const approvedRequest = async (req,res) =>{
+    
+    
+  }
+
+
 export const deleterequest = async (req, res) => {
   try {
     const id = req.params._id;

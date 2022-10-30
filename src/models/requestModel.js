@@ -17,11 +17,12 @@ const requestSchema= new Schema({
     Description:{
         type:String,
         },
-   Status:{
-    type: Boolean,
-    default: false,
-    }
-   
+    Status: {
+            type: String,
+            enum: ['pending', 'approved', 'rejected'],
+            default: 'pending'
+          }
+    
 })
 
 const Request = model('Request', requestSchema);
