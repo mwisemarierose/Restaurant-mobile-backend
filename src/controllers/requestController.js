@@ -2,7 +2,7 @@ import User from "../models/userModel.js";
 import compare from "../helpers/authentication.js";
 import mailer from "../helpers/transport.js";
 import Request from "../models/requestModel.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import AppError from "../util/appError.js";
 
 
