@@ -1,6 +1,6 @@
 import User from "../models/userModel.js";
 import compare from "../helpers/authentication.js";
-import AppError from "../util/appError.js";
+import AppError from "../util/AppError.js";
 
 export const signup = async (req, res, next) => {
   const { username, email, password } = req.body;
