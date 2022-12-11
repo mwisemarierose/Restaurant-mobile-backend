@@ -1,10 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
-import mongoConnect from './config/db.config.js'
-import userRouter from "./routers/userRoute.js";
-import orderRouter from './routers/orderRoute.js'
-import foodRouter from './routers/foodRoute.js'
-import requestRouter from './routers/requestRoute.js'
+import mongoConnect from './src/config/db.config.js'
+import userRouter from "./src/routers/userRoute.js";
+import orderRouter from './src/routers/orderRoute.js'
+import foodRouter from './src/routers/foodRoute.js'
+import requestRouter from './src/routers/requestRoute.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
