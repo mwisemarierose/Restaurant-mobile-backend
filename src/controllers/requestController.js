@@ -3,7 +3,7 @@ import compare from "../helpers/authentication.js";
 import mailer from "../helpers/transport.js";
 import Request from "../models/requestModel.js";
 import bcrypt from "bcryptjs";
-import AppError from "../util/appError.js";
+import AppError from "../util/AppError.js";
 
 
 export const createrequest = async (req, res) => {
