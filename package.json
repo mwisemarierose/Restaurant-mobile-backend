@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "food-order-and-delivery",
   "version": "1.0.0",
   "description": "",
