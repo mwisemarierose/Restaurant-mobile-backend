@@ -21,3 +21,32 @@ export const createItem = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
+export const getAllproduct = async (req, res) => {
+  try {
+    const product = await Foods.find().sort({createdAt: -1 })
+    res.status(200).json(product)
+  } catch (err) {
+    console.log(err);
+  }
+}
+export const getProduct = async (req, res) => {
+
+  try {
+    const id = req.params._id
+    const product = await Foods.findById(id)
+
+    res.status(200).json(product)
+  } catch (error) {
+    console.log(error);
+  }
+}
+export const deleteproduct = async (req, res) => {
+
+  try {
+    const id = req.params._id
+    const product = await Foods.findByIdAndDelete(id)
+    res.status(200).json({ message: "product deleted ", product })
+  } catch (error) {
+    console.log(error)
+  }
+}
