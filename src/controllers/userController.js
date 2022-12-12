@@ -4,39 +4,26 @@ import AppError from "../util/AppError.js";
 
 
 export const signup = async (req, res, next) => {
- 
+  try{ 
   const { username, email,phone, password } = req.body;
   const hashpassword = compare.hashpassword(password);
+     
+     const user = await User.create({
+      username: username,
+        email: email,
+        phone:phone,
+        password: hashpassword,
+   })
 
-  let userEmailExist = await User.findOne({ email: req.body.email });
-  let usernameExist = await User.findOne({ username: req.body.username });
-  if (userEmailExist) return next(new AppError("Email already taken!", 409));
-  if (usernameExist) return next(new AppError("Username already taken!", 409));
+  return res.status(200).json({message:"user created successfully",user})
 
-  const user = new User({
-    username: username,
-    email: email,
-    phone:phone,
-    password: hashpassword,
-  });
-
-  user
-    .save()
-    .then(() => {
-      res.status(201).json({
-        message: "You have successfully registered. Please login now", 
-        data:user
-      });
-    })
-    .catch((err) => {
-      res.status(500).json({
-        message:
-          " there is something wrong, check your internet or call support",
-        status: 500,
-      });
-    });
-};
-
+}catch(error){
+   console.log(error);
+   return res.status(400).json({error:error.message})
+}
+}
+ 
+  
 export const signin = async (req, res) => {
   try {
     const { email, password } = req.body;
