@@ -17,7 +17,11 @@ const userSchema = new Schema({
       lowercase: true,
       validate: [isEmail, 'Please! provide valid email']
     },
-
+    phone: {
+      type: String,
+      required: [true, 'Please! provide your Phone .']
+    },
+    thumb: String,
     password: {
       type: String,
       required: [true, 'Please! provide password'],

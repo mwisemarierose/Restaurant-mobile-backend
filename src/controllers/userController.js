@@ -1,9 +1,15 @@
 import User from "../models/userModel.js";
 import compare from "../helpers/authentication.js";
 import AppError from "../util/AppError.js";
+import cloudinary from "../helpers/cloudinary.js";
+
 
 export const signup = async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const result = await cloudinary.uploader.upload(req.file.path,{
+    folder: 'Restaurant',
+    use_filename: true
+},);
+  const { username, email,phone,thumb, password } = req.body;
   const hashpassword = compare.hashpassword(password);
 
   let userEmailExist = await User.findOne({ email: req.body.email });
@@ -14,6 +20,8 @@ export const signup = async (req, res, next) => {
   const user = new User({
     username: username,
     email: email,
+    phone:phone,
+    thumb:result.secure_url,
     password: hashpassword,
   });
 

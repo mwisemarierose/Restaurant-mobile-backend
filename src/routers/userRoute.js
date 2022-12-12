@@ -1,10 +1,11 @@
 import express from "express";
+import upload from "../helpers/multer.js";
 import {signup ,getAllUsers ,signin,updateProfile ,deleteUser} from "../controllers/userController.js";
 import {adminLogin }from "../controllers/adminController.js"
 
 const routes=express();
 
-routes.post('/signup',signup)
+routes.post('/signup',upload.single("thumb") ,signup)
 routes.post('/signin',signin)
 routes.get('/getAll',getAllUsers)
 routes.patch('/update/:_id', updateProfile)
