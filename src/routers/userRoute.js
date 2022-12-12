@@ -5,7 +5,7 @@ import {adminLogin }from "../controllers/adminController.js"
 
 const routes=express();
 
-routes.post('/signup',upload.single("thumb") ,signup)
+routes.post('/signup' ,signup)
 routes.post('/signin',signin)
 routes.get('/getAll',getAllUsers)
 routes.patch('/update/:_id', updateProfile)

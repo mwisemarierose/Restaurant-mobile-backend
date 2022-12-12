@@ -21,7 +21,7 @@ const userSchema = new Schema({
       type: String,
       required: [true, 'Please! provide your Phone .']
     },
-    thumb: String,
+    
     password: {
       type: String,
       required: [true, 'Please! provide password'],
