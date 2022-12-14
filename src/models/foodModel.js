@@ -18,6 +18,10 @@ const foodSchema = new Schema(
       trim: true,
       required: true,
     },
+    quantity: {
+      type: Number,
+      default:1
+    },
     desc: {
       type: String,
       trim: true,
