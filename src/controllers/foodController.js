@@ -24,7 +24,7 @@ export const createItem = async (req, res) => {
 export const getAllproduct = async (req, res) => {
   try {
     const product = await Foods.find().sort({createdAt: -1 })
-    res.status(200).json(product)
+    res.status(200).send(product)
   } catch (err) {
     console.log(err);
   }
