@@ -4,7 +4,22 @@ const { Schema, model } = mongoose;
 const orderSchema = new Schema(
   
   {
-    // orderId: String,
+    product:[{
+      productId:{
+        type:String,
+      },
+      name:{
+        type:String,
+      },
+      quantity:{
+        type:String,
+      },
+      desc:{
+        type:String,
+      },
+    }],
+   
+    
     username: {
       type: String,
       required: true,
@@ -13,10 +28,7 @@ const orderSchema = new Schema(
       type: String,
       required: true,
     },
-    quantity: {
-      type: [],
-      required: true,
-    },
+   
     address: {
       type: String,
       required: true,
