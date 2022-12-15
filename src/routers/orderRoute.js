@@ -4,7 +4,7 @@ import { makeOrder , getAllOrders, getOrderById } from "../controllers/orderCont
 
 const routes=express();
 
-routes.post('/orders',verifyLogin,makeOrder)
+routes.post('/orders',makeOrder)
 routes.get('/getAll',getAllOrders)
 routes.get('/getOne/:_id',verifyLogin,getOrderById)
 routes.delete('/delete',verifyLogin,getAllOrders)
